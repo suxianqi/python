@@ -1,0 +1,44 @@
+/*先定义所有的边居都变成0 方便我们后面定义和计算*/
+*{
+    margin: 0px;
+}
+.box{
+    width: 200px;
+    height: 100px;
+    padding: 20px;
+    margin:  40px auto;
+    border: 2px solid ;
+
+}
+
+.box2{
+    width: 150px;
+    height: 250px;
+    border: 2px solid;
+    margin: 20px;
+}
+#b2{
+    padding: 20px;
+    text-align: center;
+    color: #2e6da4;
+    text-decoration: underline;
+    line-height: 30px;
+}
+.header{
+    margin: auto;
+    width: 800px;
+    height: 200px;
+    background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1536053785626&di=d64f15aa930d8c265b53dd8e7b27f58a&imgtype=jpg&src=http%3A%2F%2Fimg3.imgtn.bdimg.com%2Fit%2Fu%3D1820531448%2C4097925501%26fm%3D214%26gp%3D0.jpg");
+    background-size: 100%;
+}
+
+p{
+    font-family: "Carlito";
+    font-size: 26px;
+    font-style: italic;
+    /*font-style加粗*/
+    font-weight: bold;
+    /*font-weight 斜显示*/
+    font-variant: all-petite-caps;
+    /*font-variant 全部变成大写*/
+}

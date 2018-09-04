@@ -1,0 +1,35 @@
+#outer{
+    width:300px;
+    height: 200px;
+    background: white;
+    text-align: center;
+
+}
+
+#inner{
+    width: 60px;
+    height: 30px;
+    background: #31b0d5;
+    padding: 10px 30px 10px 30px;
+    border-top: 20px  solid white;
+    margin-left:  90px ;
+
+}
+#inner2{
+    width: 60px;
+    height: 30px;
+    background: #31b0d5;
+    padding: 10px 30px 10px 30px;
+    border-top: 20px solid white;
+    margin-top: 20px;
+    margin-left:  90px ;
+}
+/*overflow 超过定义的widith就显示滚动条 */
+.myclass{
+    width: 200px;
+    background: pink;
+    overflow: scroll;
+
+}
+
+

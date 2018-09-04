@@ -1,0 +1,36 @@
+/*p .myclass是p里面的的myclass标签才生效*/
+/*p, .myclass p标签和myclass标签里面都生效*/
+body{
+    background: #E0E0E0;
+    text-align: center;
+}
+hr{
+    color: red;
+}
+p{
+    font-size: 22px;
+    color: white;
+}
+.warning{
+    color: red;
+}
+.important{
+    font-weight: bold;
+}
+h2.warning{
+    color: orange;
+}
+p .myclass{
+    color: green;
+}
+p, .myclass{
+    font-size: 40px;
+}
+#myh3{
+    font-size: 25px;
+}
+h3#yourmyh3{
+    font-size: 15px;
+}
+
+

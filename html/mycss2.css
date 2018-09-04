@@ -1,0 +1,20 @@
+/*伪类选择器 */
+a:link{
+    color: #0090F0;
+}
+a:hover{
+    color: green;
+    font-size: 20px;
+}
+a:visited{
+    color: purple;
+}
+a:active{
+    color: red;
+}
+html{
+    font-size: 10pt;
+}
+div{
+    font-size: 2rem;
+}

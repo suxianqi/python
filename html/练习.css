@@ -1,0 +1,74 @@
+*{
+    margin: 0 ;
+}
+#zong{
+    width: 1024px;
+    margin: 0 auto;
+}
+#tupian{
+    height: 250px;
+    background-image: url("meinv.jpg");
+    background-size: 100%;
+}
+
+#nav{
+    list-style: none;
+    height: 30px;
+    background: #D0D0D0;
+    margin: 0;
+    padding: 0;
+    border-bottom: 4px  solid #2e6da4;
+}
+#nav li{
+    float: left;
+}
+#nav li a{
+    display: block;
+    width: 168.3px;
+    text-align: center;
+    margin-left: 2px;
+    text-decoration: none;
+    /*超链接是下面没有下划线*/
+    color: #000;
+    height: 26px;
+    padding-top: 4px;
+    background-color: #ececec;
+}
+#left{
+    float: left;
+}
+#left_nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 120px;
+}
+.men1{
+    display: block;
+    height: 24px;
+    padding: 2px 0 0 4px;
+    font-size: 16px;
+    background-color: #cccccc;
+}
+#left_nav li{
+
+}
+#left_nav li a{
+    display: block;
+    padding-left: 4px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #000000;
+    background-color: #ececec;
+    margin:1px 0;
+}
+#left_nav li a:hover{
+    color: #ffffff;
+    background: #cccccc;
+}
+#neirong{
+    margin-left: 120px;
+    padding: 20px;
+}
+
+
