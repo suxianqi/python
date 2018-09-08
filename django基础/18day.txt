@@ -1,0 +1,151 @@
+配置虚拟环境
+1`创建虚拟环境
+mkdir -pv /opt/py3env
+python3 -m /opt/py3env/djenv
+2激活虚拟环境
+source /opt/py3env/djenv/bin/avtivate
+3`激活之后,安装django,就是安装在了虚拟环境下
+pip install django==1.11.6
+pip install pymysql
+
+查找本地环境安装了软件包
+pip freeze
+pip freeze >pkgs.txt
+下载
+pip install --download /新建存储目录 pkgs.txt
+
+1`创建项目
+
+2`配置环境
+
+3`为django项目创建数据库
+create database django default charset utf8;
+
+4`修改django的设置 settings.py
+ALLOWED_HOSTS = '*'
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST' : '127.0.0.1',
+        'PORT' : '3306'
+    }
+}
+#配置web的显示语言
+LANGUAGE_CODE = 'zh-Hans'
+
+TIME_ZONE = 'Asia/Shanghai'
+5`加载连接mysql的模块,在__init__.py中写入以下内容
+improt pymysql
+pymysql.install_as_MySQL_db()
+6`启动服务
+python manage.py runserver 0:8000
+7`生成数据库
+python manage.py migrate
+8`创建后台管理员
+python manage.py createsuperuser
+9`在启动服务
+
+django基础测试
+1`新建视图
+# vim mysite/views.py
+from django.shortcuts import HttpResponse
+
+def index(request):
+    return HttpResponse('<h1>Hello World</h1>')
+2`修改urls.py访问主页时,使用views模块的index函数响应
+from django.conf.urls import url
+from django.contrib import admin
+from . import views
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$',views.index,name='index')  #name='index' 是首页url的页面名字
+]
+
+管理"投票"应用
+1`创建应用(在mysite下的创建新的其他的子项目)
+python manage.py startapp polls
+2`在项目中注册应用,修改settings.py
+INSTALLED_APPS = [
+    ...
+    '加入子项目的目录名字',
+    'polls'
+]
+3`规划url,polls应用下有多少个页面,但是每个页面访问时,都以
+http://127.0.0.1/polls开头, 如http://127.0.0.1/polls/1
+都交给polls应用的urls.py
+# vim mysite/urls.py   (这里就是以polls/后面的都交给polls的子项目来处理这个url)
+from django.conf.urls import url, include
+urlpatterns = [
+    ... ...
+    url(r'^polls/', include('polls.urls')),
+]
+4`创建应用的url映射文件 (把url后面polls/后面都交给polls的子目录来处理)
+# vim polls/urls.py
+from django.conf.urls import url
+from . import views
+
+urlpatterns = [
+    url(r'^$', views.polls_index, name='polls_index'),
+]
+
+5`创建视图
+# vim polls/views.py
+from django.shortcuts import render, HttpResponse
+
+def polls_index(request):
+    return HttpResponse('<h1>Polls index</h1>')
+
+6`创建模版
+(1)创建模版目录  (默认时以temlates为默认目录)
+mkdir -p polls/temlates/polls
+(2)创建模版文件
+vim polls/templates/polls/polls_indes.html
+(3)更改视图views.py
+def poll_index(request):
+    return render(request,'polls/polls_index.html')
+
+
+建立模型Model
+1`创建ORM映射类
+#vim polls/models.py
+from django.db import models
+
+class Question(models.Model):
+    question_text.CharField(max_length200)
+    publish_date = models.DateField()  #时间的类型
+
+    def __str__(self):   #这里让web返回的字段变成我输入的字符
+        return self.qusetion_text
+
+class Choice(models.Model):
+    choice_text = models.CharField(max_length=200)  #字符字段最大为200个
+    votes = models.IntegerField(default=0)       #整数字段
+    question = models.ForeignKey(Question,models.CASCADE)   #添加外键外键名字是Question
+2`生成数据库中的表
+python manage.py makemigtations
+python manage.py migrate
+
+3`在数据库show tables查看表名
+4`查看表中字段
+  (1)django会在表中默认自动加入一列id,作为主键
+  (2)表中的每个字段与类变量相同
+  (3)外键是类变量名加上id
+5`把模型注册到后台管理界面修改polls/admin.py如下:
+from django.contrib import admin
+from .models import  Question,Choice
+
+admin.site.register(Question)
+admin.site.register(Choice)
+6`访问在http://127.0.0.1:8000/admin ,在后台可以添加数据
+
+
+
+
+
+
+
+
